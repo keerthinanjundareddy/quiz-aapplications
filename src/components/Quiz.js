@@ -77,6 +77,10 @@ function Quiz() {
     if (option === currentQuestion.correct_answer) {
       // Set border color to green for correct option
       document.getElementById(option).classList.add("correct");
+      setTimeout(() => {
+        handleNextQuestion();
+      }, 1000);
+      
     } else {
       // Set border color to red for incorrect option
       document.getElementById(option).classList.add("wrong");
