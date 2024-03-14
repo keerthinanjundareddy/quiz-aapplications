@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './Quiz.css';
+import arrowback from '../Assets/arrow_back.png'
 
 function Quiz() {
   const quizQuestions = [
     {
         "question": "What is the capital of France?",
-        "options": ["London", "Paris", "Berlin", "Rome"],
+        "options": ["London ", "Paris", "Berlin", "Rome"],
         "correct_answer": "Paris",
         "explanation": "Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral."
     },
@@ -79,8 +80,8 @@ function Quiz() {
       document.getElementById(option).classList.add("correct");
       setTimeout(() => {
         handleNextQuestion();
-      }, 1000);
-      
+      }, 500);
+
     } else {
       // Set border color to red for incorrect option
       document.getElementById(option).classList.add("wrong");
@@ -109,10 +110,15 @@ function Quiz() {
     <>
       <div className='quiz-fullbox-container'>
         <div className='quiz-section'>
-          <div className='quiz-heading'><b>Quiz Section</b></div>
+          <div className='quiz-heading'><b>Quiz question</b></div>
 
           <div className='quiz-questions'>
-            {currentQuestion.question}
+  <span>{currentQuestionIndex + 1}. </span>{currentQuestion.question}
+</div>
+
+
+          <div className='select-your-answer-div'>
+            Select your answer
           </div>
           <div className='quiz-options'>
           {currentQuestion.options.map((option, index) => (
@@ -132,16 +138,24 @@ function Quiz() {
             <div className='explanation-text-heading'>
               Explanation
             </div>
-            <div>
+            <div className='explanation-answer-heading'>
               {currentQuestion.explanation}
             </div>
           </div>
           )}
 
           <div className='quiz-next-btn-section'>
+          <div className='number-of-questions-div'>
+  question <span><b>{currentQuestionIndex + 1}</b></span> off {quizQuestions.length}
+</div>
+
+         
             {currentQuestionIndex < quizQuestions.length - 1 &&
-              <button className='quiz-next-btn' onClick={handleNextQuestion}>Next</button>
+               <div>
+              <div className='quiz-next-btn' onClick={handleNextQuestion}>Next<span ><img src={arrowback} className='arrowback-icon' alt="arrow-icon" /></span></div>
+              </div>
             }
+            
           </div>
         </div>
       </div>

@@ -1,16 +1,21 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora&display=swap');
 
-* {
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora&display=swap');
+
+
+
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
   }
   
   body {
+    font-family: "Sora", sans-serif;
     /* margin: 0; */
-    background-color: aqua;
-   
+    background: linear-gradient(to right, rgb(166, 166, 230), #ef709e);
+    /* background-color:#F7F7F7 ; */
   }
   
   .quiz-fullbox-container {
@@ -28,7 +33,7 @@
     border: 1px solid #FAFAFA;
     background-color:#FFFFFF ;
     border-radius: 10px;
-    width: calc(100vw - 65%);
+    width: calc(100vw - 50%);
     margin: auto; /* This shorthand property will center the element both horizontally and vertically */
     /* height: calc(100vh - 100px); */
     padding: 20px;
@@ -37,16 +42,18 @@
     /* margin-bottom: 20px; */
   }
   .quiz-heading{
-    font-weight: 600;
+    font-weight: 500;
     color:#000000;
     text-transform: uppercase;
-    padding-top: 20px;
+    padding-top: 10px;
     text-align: center;
+    font-size: 20px;
   }
   .quiz-questions{
     font-weight: 500;
     color:#000000;
-    padding-top: 20px;
+    padding-top: 25px;
+    font-size: 18px;
 
   }
   .quiz-answers{
@@ -60,37 +67,65 @@
     text-align: center;
    }
   .quiz-next-btn-section{
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding-top: 30px;
  
    }
    .quiz-explanation-section{
-    border:1px solid black;
-    box-shadow: 0.5px 0.5px 0.5px 0.5px black;
+    border:1px solid #F7F7F7;
+    background-color:#F7F7F7;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px #F7F7F7;
     margin-top: 20px;
     padding: 10px;
     border-radius: 10px;
    }
   .quiz-next-btn{
-    font-weight: 600;
+    font-weight: 400;
     border:none;
     outline:none;
-    background-color: aqua;
-    border:1px solid aqua;
+    background-color:  #096DB5;
+    border:1px solid #096DB5;
     border-radius: 10px;
     padding: 10px;
     color:white;
-    width:50%;
+    width:100%;
     cursor:pointer;
+    font-size: 15px;
    
   }
   .explanation-text-heading{
     padding-top: 0px;
     padding-bottom: 5px;
-    font-weight: 600;
+    font-weight: 500;
     color:#000000;
+    font-size: 16px;
   }
 
+  .explanation-answer-heading{
+    color:#4B4B4B;
+    font-weight: 400;
+    font-size: 15px;
+  }
+
+  .select-your-answer-div{
+    padding-top: 25px;
+    font-size: 15px;
+    color:#4B4B4B;
+    font-weight: 400;
+
+  }
+
+  .number-of-questions-div{
+    padding-top: 10px;
+    color:#4B4B4B;
+    font-size: 16px;
+    
+  }
+ .arrowback-icon{
+    padding-left: 5px;
+  }
   @media only screen and (max-width:768px){
     .quiz-section {
         display: flex;
@@ -114,23 +149,30 @@
 
   /* gpt css */
   .quiz-option {
-    color: #000000;
+    color: #4B4B4B;
     padding: 8px;
-    border: 1px solid #cccccc;
+    border: 1px solid #F7F7F7;
     border-radius: 10px;
     margin-top: 20px;
     cursor: pointer;
-    text-align: center;
+    text-align: left;
+    background-color: #F7F7F7;
+    padding-left: 20px;
+    max-width: 85%;
+    font-size: 15px;
+    font-weight: 400;
   }
   
   .quiz-option.correct {
     border-color: green;
-    color: green;
+    color: white;
+    background-color: green;
   }
   
   .quiz-option.wrong {
-    border-color: red;
-    color: red;
+    border-color: #FFDBDB;
+    color: #EC0F0F;
+    background-color: #FFDBDB;
   }
   
   
@@ -138,18 +180,19 @@
     font-weight: 600;
     border: none;
     outline: none;
-    background-color: aqua;
-    border: 1px solid aqua;
+    background-color: #096DB5;
+    border: 1px solid #096DB5;
     border-radius: 10px;
     padding: 10px;
     color: white;
-    width: 50%;
+    width: 100%;
     cursor: pointer;
   }
   
   .quiz-explanation-section {
-    border: 1px solid black;
-    box-shadow: 0.5px 0.5px 0.5px 0.5px black;
+    border: 1px solid #F7F7F7;
+    background-color:#F7F7F7;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px #F7F7F7;
     margin-top: 20px;
     padding: 10px;
     border-radius: 10px;
