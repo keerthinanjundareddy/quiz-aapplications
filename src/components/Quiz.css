@@ -40,6 +40,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     /* margin-bottom: 20px; */
+    overflow-y: auto;
   }
   .quiz-heading{
     font-weight: 500;
@@ -75,7 +76,7 @@
    }
    .quiz-explanation-section{
     border:1px solid #F7F7F7;
-    background-color:#F7F7F7;
+    background-color:#e3e3e3;
     box-shadow: 0.5px 0.5px 0.5px 0.5px #F7F7F7;
     margin-top: 20px;
     padding: 10px;
@@ -189,14 +190,7 @@
     cursor: pointer;
   }
   
-  .quiz-explanation-section {
-    border: 1px solid #F7F7F7;
-    background-color:#F7F7F7;
-    box-shadow: 0.5px 0.5px 0.5px 0.5px #F7F7F7;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 10px;
-  }
+ 
   
   .explanation-text-heading {
     padding-top: 0px;

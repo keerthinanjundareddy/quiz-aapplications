@@ -8,7 +8,7 @@ function Quiz() {
         "question": "What is the capital of France?",
         "options": ["London ", "Paris", "Berlin", "Rome"],
         "correct_answer": "Paris",
-        "explanation": "Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral."
+        "explanation": "Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral.Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral."
     },
     {
         "question": "Who painted the Mona Lisa?",
@@ -78,9 +78,7 @@ function Quiz() {
     if (option === currentQuestion.correct_answer) {
       // Set border color to green for correct option
       document.getElementById(option).classList.add("correct");
-      setTimeout(() => {
-        handleNextQuestion();
-      }, 1800);
+  
 
     } else {
       // Set border color to red for incorrect option
