@@ -164,6 +164,7 @@
         padding: 20px;
         margin-top: 20px;
         margin-bottom: 20px;
+        overflow-y: auto;
         /* margin-bottom: 20px; */
       }
     
