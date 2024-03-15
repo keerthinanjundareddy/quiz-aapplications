@@ -28,20 +28,38 @@
   .quiz-section {
     display: flex;
     flex-direction: column;
-
-   
+    /* position: fixed; */
+    height:80vh;
     border: 1px solid #FAFAFA;
     background-color:#FFFFFF ;
     border-radius: 10px;
     width: calc(100vw - 50%);
+    height:calc(100vh -10%);
     margin: auto; /* This shorthand property will center the element both horizontally and vertically */
     /* height: calc(100vh - 100px); */
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    /* margin-bottom: 20px; */
+
     overflow-y: auto;
   }
+
+  .quiz-section::-webkit-scrollbar {
+    width: 4px;
+    height:20px; /* Width of the scrollbar */
+  }
+
+  .quiz-section::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Color of the scrollbar thumb */
+    border-radius: 5px; 
+    max-height: 1vh !important;/* Border radius of the scrollbar thumb */
+  }
+
+  .quiz-section::-webkit-scrollbar-track {
+    background-color: transparent; /* Color of the scrollbar track */
+    border-radius: 5px; /* Border radius of the scrollbar track */
+  }
+
   .quiz-heading{
     font-weight: 500;
     color:#000000;
