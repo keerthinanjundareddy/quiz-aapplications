@@ -216,13 +216,15 @@
 }
 
 .quiz-option.correct {
-    border-color: #E9F1E6;
+  /* box-shadow: 0 0 0 0.5px #2AB965;  */
+    /* border-color: #2AB965; */
     color: #2AB965;
-    background-color: #B6E5CF;
+    background-color: #D1FFE4;
 }
 
 .quiz-option.wrong {
-    border-color: #FFDBDB;
+  /* box-shadow: 0 0 0 0.5px  #EC0F0F; */
+    /* border-color: #EC0F0F; */
     color: #EC0F0F;
     background-color: #FFDBDB;
 }
