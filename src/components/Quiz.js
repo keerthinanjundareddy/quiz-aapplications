@@ -80,7 +80,7 @@ function Quiz() {
       document.getElementById(option).classList.add("correct");
       setTimeout(() => {
         handleNextQuestion();
-      }, 500);
+      }, 1800);
 
     } else {
       // Set border color to red for incorrect option
@@ -110,7 +110,7 @@ function Quiz() {
     <>
       <div className='quiz-fullbox-container'>
         <div className='quiz-section'>
-          <div className='quiz-heading'><b>Quiz question</b></div>
+          <div className='quiz-heading'><b> question</b></div>
 
           <div className='quiz-questions'>
   <span>{currentQuestionIndex + 1}. </span>{currentQuestion.question}
