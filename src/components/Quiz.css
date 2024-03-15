@@ -44,21 +44,25 @@
     overflow-y: auto;
   }
 
+
+/* WebKit browsers (Chrome, Safari) */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
   .quiz-section::-webkit-scrollbar {
-    width: 4px;
-    height:20px; /* Width of the scrollbar */
+    width: 4px; /* Width of the scrollbar */
   }
 
   .quiz-section::-webkit-scrollbar-thumb {
     background-color: #ccc; /* Color of the scrollbar thumb */
-    border-radius: 5px; 
-    max-height: 1vh !important;/* Border radius of the scrollbar thumb */
+    border-radius: 5px; /* Border radius of the scrollbar thumb */
+    max-height: 100px !important;
   }
 
   .quiz-section::-webkit-scrollbar-track {
     background-color: transparent; /* Color of the scrollbar track */
     border-radius: 5px; /* Border radius of the scrollbar track */
+    height: 2px; /* Height of the scrollbar track */
   }
+}
 
   .quiz-heading{
     font-weight: 500;
@@ -167,7 +171,7 @@
 
 
   /* gpt css */
-  .quiz-option {
+  /* .quiz-option {
     color: #4B4B4B;
     padding: 8px;
     border: 1px solid #F7F7F7;
@@ -183,17 +187,72 @@
   }
   
   .quiz-option.correct {
-    border-color: green;
-    color: white;
-    background-color: green;
+    border-color: #E9F1E6;
+    color: rgb(2, 35, 12);
+    background-color:#B6E5CF;
   }
   
   .quiz-option.wrong {
     border-color: #FFDBDB;
     color: #EC0F0F;
     background-color: #FFDBDB;
-  }
+  } */
   
+
+  .quiz-option {
+    color: #4B4B4B;
+    padding: 8px;
+    border: 1px solid #F7F7F7;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    text-align: left;
+    background-color: #F7F7F7;
+    padding-left: 20px;
+    max-width: 85%;
+    font-size: 15px;
+    font-weight: 400;
+    position: relative; /* Ensure positioning context */
+}
+
+.quiz-option.correct {
+    border-color: #E9F1E6;
+    color: #2AB965;
+    background-color: #B6E5CF;
+}
+
+.quiz-option.wrong {
+    border-color: #FFDBDB;
+    color: #EC0F0F;
+    background-color: #FFDBDB;
+}
+
+.quiz-option::after {
+    content: ""; /* Empty content to add pseudo-element */
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; /* Adjust as needed */
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    background-size: contain;
+}
+
+.quiz-option.correct::after {
+    background-image: url('../Assets/check\ \(1\).png');
+    border:1px solid #2AB965;
+    border-radius: 50%;
+    background-color: #2AB965;
+}
+
+.quiz-option.wrong::after {
+    background-image: url('../Assets/close\ \(3\).png');
+    border:1px solid #EC0F0F;
+    border-radius: 50%;
+    background-color: #EC0F0F;;
+}
+
   
   .quiz-next-btn {
     font-weight: 600;
