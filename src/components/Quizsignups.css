@@ -176,7 +176,7 @@
       border-radius: 10px;
       width: calc(100vw - 10%);
       margin: auto;
-      height:auto; /* This shorthand property will center the element both horizontally and vertically */
+      height:calc(100vh - 20vh);
       /* height: calc(100vh - 100px); */
       padding: 20px;
       /* margin-top: 20px; */
