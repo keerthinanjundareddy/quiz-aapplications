@@ -14,11 +14,12 @@
   body {
     font-family: "Sora", sans-serif;
     /* margin: 0; */
-    background: linear-gradient(to right, rgb(166, 166, 230), #ef709e);
+    /* background: linear-gradient(to right, rgb(166, 166, 230), #ef709e); */
     /* background-color:#F7F7F7 ; */
   }
   
   .quiz-fullbox-container {
+    background: linear-gradient(to right, rgb(166, 166, 230), #ef709e);
     display: flex;
     align-items: center;
     height: 100vh;
@@ -36,7 +37,7 @@
     width: calc(100vw - 50%);
     /* height:calc(100vh -10%); */
     margin: auto; /* This shorthand property will center the element both horizontally and vertically */
-    /* height: calc(100vh - 100px); */
+    height: calc(100vh - 100px);
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -278,4 +279,7 @@
     font-weight: 600;
     color: #000000;
   }
+
+
+ 
   
