@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './Quiz.css';
 import arrowback from '../Assets/arrow_back.png'
+import { useNavigate } from 'react-router-dom';
 
-function Quiz() {
+function Quiz({ handleLogout }) {
   const quizQuestions = [
     {
         "question": "What is the capital of France?",
@@ -66,99 +67,108 @@ function Quiz() {
     }
 ]
 
+const navigate = useNavigate()
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [showFinishPopup, setShowFinishPopup] = useState(false); // New state for finish popup
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
-  
-    if (option === currentQuestion.correct_answer) {
-      // Set border color to green for correct option
-      document.getElementById(option).classList.add("correct");
-  
 
+    if (option === currentQuestion.correct_answer) {
+      document.getElementById(option).classList.add("correct");
     } else {
-      // Set border color to red for incorrect option
       document.getElementById(option).classList.add("wrong");
-      // Set border color to green for correct option
       document.getElementById(currentQuestion.correct_answer).classList.add("correct");
       setShowExplanation(true);
     }
   };
-  
-  
-  
+
   const handleNextQuestion = () => {
-    // Reset border colors for all options
     setShowExplanation(false);
     document.querySelectorAll('.quiz-option').forEach(option => {
       option.classList.remove('correct', 'wrong');
     });
-  
-    // Move to the next question
-    setCurrentQuestionIndex(prevIndex => prevIndex + 1);
-    setSelectedOption(null); // Reset selected option when moving to the next question
+
+    if (currentQuestionIndex < quizQuestions.length - 1) {
+      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+      setSelectedOption(null);
+    } else {
+      setShowFinishPopup(true); // Show finish popup when reaching the last question
+    }
   };
 
+  const handleFinishQuiz = () => {
+    setShowFinishPopup(true); // Hide finish popup
+    // You can perform any other actions here, such as showing results or navigating away
+  };
+
+  const handleFinishQuiztwo= () =>{
+    handleLogout();
+    navigate('/')
+
+  }
 
   return (
     <>
-     <section>
-      <div className='quiz-fullbox-container'>
-        <div className='quiz-section'>
-          <div className='quiz-heading'><b> question</b></div>
-
-          <div className='quiz-questions'>
-  <span>{currentQuestionIndex + 1}. </span>{currentQuestion.question}
-</div>
-
-
-          <div className='select-your-answer-div'>
-            Select your answer
-          </div>
-          <div className='quiz-options'>
-          {currentQuestion.options.map((option, index) => (
-  <div
-    key={index}
-    id={option} // Add unique ID for each option
-    className={`quiz-option`}
-    onClick={() => handleOptionClick(option)}
-  >
-    {option}
-  </div>
-))}
-
-          </div>
-          {showExplanation && (
-          <div className='quiz-explanation-section'>
-            <div className='explanation-text-heading'>
-              Explanation
+      <section>
+        <div className='quiz-fullbox-container'>
+          <div className='quiz-section'>
+            <div className='quiz-heading'><b> question</b></div>
+            <div className='quiz-questions'>
+              <span>{currentQuestionIndex + 1}. </span>{currentQuestion.question}
             </div>
-            <div className='explanation-answer-heading'>
-              {currentQuestion.explanation}
+            <div className='select-your-answer-div'>
+              Select your answer
             </div>
-          </div>
-          )}
-
-          <div className='quiz-next-btn-section'>
-          <div className='number-of-questions-div'>
-  question <span><b>{currentQuestionIndex + 1}</b></span> off {quizQuestions.length}
-</div>
-
-         
-            {currentQuestionIndex < quizQuestions.length - 1 &&
-               <div>
-              <div className='quiz-next-btn' onClick={handleNextQuestion}>Next<span ><img src={arrowback} className='arrowback-icon' alt="arrow-icon" /></span></div>
+            <div className='quiz-options'>
+              {currentQuestion.options.map((option, index) => (
+                <div
+                  key={index}
+                  id={option}
+                  className={`quiz-option`}
+                  onClick={() => handleOptionClick(option)}
+                >
+                  {option}
+                </div>
+              ))}
+            </div>
+            {showExplanation && (
+              <div className='quiz-explanation-section'>
+                <div className='explanation-text-heading'>
+                  Explanation
+                </div>
+                <div className='explanation-answer-heading'>
+                  {currentQuestion.explanation}
+                </div>
               </div>
-            }
-            
+            )}
+            <div className='quiz-next-btn-section'>
+              <div className='number-of-questions-div'>
+                question <span><b>{currentQuestionIndex + 1}</b></span> off {quizQuestions.length}
+              </div>
+              {currentQuestionIndex < quizQuestions.length - 1 ? (
+                <div className='quiz-next-btn' onClick={handleNextQuestion}>Next<span ><img src={arrowback} className='arrowback-icon' alt="arrow-icon" /></span></div>
+              ) : (
+                <div className='quiz-next-btn' onClick={handleFinishQuiz}>Finish</div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
       </section>
+      {showFinishPopup && (
+        <div className="finish-popup">
+          <div className="finish-popup-content">
+            <h2>Congratulations!</h2>
+            <p>You have successfully completed the test.</p>
+            <button onClick={handleFinishQuiztwo}>Exit</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

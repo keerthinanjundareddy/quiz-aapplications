@@ -10,7 +10,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function Quizusersignin() {
+function Quizusersignin({ setIsAuthenticated}) {
   const [userNameFocused, setUserNameFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -113,9 +113,10 @@ const navigate = useNavigate()
     axios.post(QuixSignInApi,formBody,{headers:headerObject})
     .then((res)=>{
       console.log("result",res)
-      const resultData=res.data.access_token;
-      localStorage.setItem("resultData",resultData)
-      // setIsAuthenticated(true);
+      const accessToken = res.data.access_token;
+      // console.log("accesstoken",accessToken)
+      localStorage.setItem('accessToken', accessToken);
+      setIsAuthenticated(true);
       navigate("/lms")
 
   

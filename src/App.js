@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Quiz from './components/Quiz'
-import { Route, BrowserRouter as Router, Routes,Navigate} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
 import Quizusersignup from './components/Quizusersignup';
 import Quizusersignin from './components/Quizusersignin';
 import Quizuserforgotpassword from './components/Quizuserforgotpassword'
@@ -21,25 +21,44 @@ function App() {
     }
   }, []);
 
+  const handleLogout = () => {
+    //  accessToken is stored in localStorage
+    const accessToken = localStorage.getItem('accessToken');
+
+    // Display an alert
+    // window.alert("Logout successful");
+
+    // Remove the accessToken from localStorage
+    localStorage.removeItem('accessToken');
+
+    // Set isAuthenticated to false 
+    setIsAuthenticated(false);
+
+
+    setEmailVerified(false);
+
+   
+  };
+
   return (
     <>
 <Router>
 <div className="App">
   <Routes>
-    <Route  path="/"  Component={Quizusersignin} setIsAuthenticated={ setIsAuthenticated } />
+    <Route  path="/"  element={<Quizusersignin  setIsAuthenticated={ setIsAuthenticated }/>}  />
   
-    <Route path="/signUp"   Component={Quizusersignup} />
-    <Route path="/forgotPassword"   Component={Quizuserforgotpassword} setEmailVerified={setEmailVerified} />
-    <Route path="/resetPassword/:userID"     Component={ Quizuseresetpassword } />
+    <Route path="/signUp"   element={<Quizusersignup />}  />
+    <Route path="/forgotPassword"   element={<Quizuserforgotpassword setEmailVerified={setEmailVerified} />} />
+    <Route path="/resetPassword/:userID"     element={emailVerified ? <Quizuseresetpassword /> : <Navigate to="/forgotpassword" />}/>
 
-    <Route path="/lms"    Component={Quiz} />
+    {/* <Route path="/lms"    Component={Quiz} /> */}
 
-    {/* {isAuthenticated ? (
-  <Route path="/quiz"  Component={Quiz} />
+    {isAuthenticated ? (
+  <Route path="/lms"  element={<Quiz handleLogout={handleLogout} />} />
     ):
     (
-    <Route path="/"  Component={Quizusersignin} />
-    )} */}
+    <Route path="/lms"  element={<Navigate to="/" />} />
+    )}
 
 
 

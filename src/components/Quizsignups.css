@@ -12,12 +12,12 @@
   section {
     width: 100%;
    
-background-color: red;
+/* background-color: red; */
     position: fixed;
     /* position: relative; */
     height: 100vh;
     /* height:auto; */
-    background: linear-gradient(to right, #017ff4e8, #ff6699) !important;
+    background: linear-gradient(to right, rgb(166, 166, 230), #ef709e) !important;
 
     /* #0084ffc5 Adjust color codes as needed */
 }

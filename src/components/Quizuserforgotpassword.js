@@ -5,7 +5,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from 'axios'
 import { Navigate, useNavigate } from 'react-router-dom';
 
-function Quizuserforgotpassword() {
+function Quizuserforgotpassword({ setEmailVerified }) {
     const [userNameFocused, setUserNameFocused] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
     const[email,setEmail]=useState("")
@@ -46,7 +46,8 @@ function Quizuserforgotpassword() {
     .then((res)=>{
       console.log("forgot password result",res)
       setUserId(res.data.userID); 
-      console.log("userid", res.data.userID); 
+      console.log("userid", res.data.userID);
+      setEmailVerified(true); 
       navigate(`/resetPassword/${res.data.userID}`)
     
     })
