@@ -61,21 +61,21 @@ function Quizuseresetpassword() {
   const handleResetPassword = (e) => {
 
     e.preventDefault();
-    window.alert("hi");
+
 
    
 
-    if(passwords.trim === '')
-    {
-      setPasserr("password caannot be empty")
-      return;
-    }
+    // if(passwords.trim === '')
+    // {
+    //   setPasserr("password cannot be empty")
+    //   return;
+    // }
 
-    if(confirmPasswords.trim === '')
-    {
-      setConfirmpasserr("password caannot be empty")
-      return;
-    }
+    // if(confirmPasswords.trim === '')
+    // {
+    //   setConfirmpasserr("password cannot be empty")
+    //   return;
+    // }
 
 
 
@@ -85,6 +85,30 @@ function Quizuseresetpassword() {
     // const ResetApi=`https://chat-bot-taupe-one.vercel.app/auth/reset-password/${userID}`
 
     // console.log("restapi",ResetApi)
+
+    if (passwords !== confirmPasswords) {
+      setPasserr("Passwords are not matching");
+      setConfirmpasserr("Passwords are not matching");
+      return;
+    }
+
+    if(!passwords.trim()){
+      setPasserr("password cannot be empty");
+      return;
+    } else {
+      setPasserr(''); // Clear the frontend error when the username is not empty
+    }
+
+
+    if(!confirmPasswords.trim())
+    {
+      setConfirmpasserr("confirmpassword cannot be empty");
+      return;
+    }
+    else{
+      setConfirmpasserr('')
+    }
+    console.log("resetuserId", userID)
 
 
     const RequestDetails={
@@ -103,7 +127,7 @@ function Quizuseresetpassword() {
     }
  
 
-    axios.post(`https://chat-bot-taupe-one.vercel.app/auth/reset-password/${userID}`,RequestDetails,{headers:headerObject})
+    axios.post(`https://hyundai-lms-theta.vercel.app/auth/reset-password/${userID}`,RequestDetails,{headers:headerObject})
     .then((res)=>{
       console.log("forgotpasswordresult",res)
       navigate('/')
@@ -113,28 +137,6 @@ function Quizuseresetpassword() {
     })
     .catch((err)=>{
       console.log("err",err)
-
-      if(err.response.data === '"password" is not allowed to be empty')
-      {
-        setPasserr("password cannot be Empty")
-      }
-      else{
-        setPasserr('');
-
-      }
-
-      if(err.response.data === '"confirmPassword" must be [ref:password]')
-      {
-        setPasserr("password and confirm password are not matching")
-        setConfirmpasserr("password and confirm password are not matching")
-      }
-      else{
-        setPasserr('');
-        setConfirmpasserr('');
-
-      }
-
-
 
     })
 

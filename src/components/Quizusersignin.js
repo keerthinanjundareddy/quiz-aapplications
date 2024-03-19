@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import './Quizsignups.css';
 import TextField from '@mui/material/TextField';
+import EmailIcon from '@mui/icons-material/Email';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Import the icon component
 import LockIcon from '@mui/icons-material/Lock'; // Import the lock icon component
 import IconButton from '@mui/material/IconButton';
@@ -170,7 +171,7 @@ const navigate = useNavigate()
 
           <div className="userquizsignuptextinputfield">
             <div className="input-with-icon">
-              <AccountCircleIcon style={{ marginRight: '5px', marginTop: '20px' }} /> {/* Icon placed before text field */}
+              <EmailIcon style={{ marginRight: '5px', marginTop: '20px' }} /> {/* Icon placed before text field */}
               <TextField
              
                 label={userNameFocused ? 'Email id' : 'Email id'}

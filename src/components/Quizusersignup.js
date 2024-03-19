@@ -132,10 +132,8 @@ function Quizusersignup() {
     .catch((err)=>{
       console.log("signUpErrors",err.response.data)
 
-      if(err.response.data.message==="user already exist!"){
-        setTitleErr("user already exists! ")
-      }
-      else if (err.response.data.message==="Name is not correct!")
+      
+       if (err.response.data.message==="Name is not correct!")
       {
         setTitleErr("Name is not correct!")
        }
@@ -144,6 +142,9 @@ function Quizusersignup() {
       }
        if(err.response.data.message==="Email is invalid!"){
         setnameErr("enter valid email id")
+      }
+      else if(err.response.data.message==="user already exist!"){
+        setnameErr("user already exists! ")
       }
       else{
         setnameErr("")
