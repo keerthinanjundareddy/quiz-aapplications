@@ -9,42 +9,35 @@
     box-sizing: border-box;
   }
   
-  body {
-    font-family: "Sora", sans-serif;
-  
-    /* margin: 0; */
-    /* background: linear-gradient(to right, rgb(166, 166, 230), #ef709e); */
-    /* background-color:rgb(66, 166, 230); */
-  }
-  
-  .usersignupquiz-fullbox-container {
-    display: flex;
-    /* align-items: center; */
-    height: auto;
+  section {
     width: 100%;
-    background: linear-gradient(to right, rgb(166, 166, 230), #ef709e);
-    height:100vh;
-   }
+   
+background-color: red;
+    position: fixed;
+    /* position: relative; */
+    height: 100vh;
+    /* height:auto; */
+    background: linear-gradient(to right, #017ff4e8, #ff6699) !important;
+
+    /* #0084ffc5 Adjust color codes as needed */
+}
+
   
   .usersignupquiz-section {
-    display: flex;
-    flex-direction: column;
-    /* text-align: center; */
-    /* align-items: center; */
-    /* position: fixed; */
-    /* height:80vh; */
-    border: 1px solid #FAFAFA;
-    background-color:#ffffff;
-    border-radius: 10px;
-    width: calc(100vw - 70%);
-    height:auto;
-    /* height:calc(100vh -10%); */
-    margin: auto; /* This shorthand property will center the element both horizontally and vertically */
-    /* height: calc(100vh - 100px); */
-    padding: 20px;
-  
-
-    overflow-y: auto;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #FFFFFF;
+   
+    /* background-image: url('Vector.png') ; */
+    border:1px solid #FFFFFF;
+    border-radius:20px;
+    width:390px;
+    /* height:430px; */
+    padding:20px;
+   
+    display: block;
   }
 
 
@@ -176,7 +169,7 @@
       border-radius: 10px;
       width: calc(100vw - 10%);
       margin: auto;
-      height:calc(100vh - 20vh);
+      /* height:calc(100vh - 50vh); */
       /* height: calc(100vh - 100px); */
       padding: 20px;
       /* margin-top: 20px; */
@@ -184,14 +177,7 @@
       overflow-y: auto;
       /* margin-bottom: 20px; */
     }
-    .usersignupquiz-fullbox-container {
-      display: flex;
-      /* align-items: center; */
-      height: auto;
-      width: 100%;
-      background: linear-gradient(to right, rgb(166, 166, 230), #ef709e);
-      height:100vh;
-     }
+   
 
      .quizlogin-btn{
       cursor: none;

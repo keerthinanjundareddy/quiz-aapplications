@@ -143,6 +143,7 @@ function Quizuseresetpassword() {
 
   return (
     <>
+    <section>
       <div className='usersignupquiz-fullbox-container'>
         <div className='usersignupquiz-section '>
           <div className='quiz-login-text'>Reset Password</div>
@@ -210,6 +211,7 @@ function Quizuseresetpassword() {
           </div>
         </div>
       </div>
+      </section>
     </>
   )
 }

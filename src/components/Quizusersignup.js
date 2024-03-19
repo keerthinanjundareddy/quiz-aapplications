@@ -168,6 +168,7 @@ function Quizusersignup() {
 
   return (
     <>
+     <section>
       <div className='usersignupquiz-fullbox-container'>
         <div className='usersignupquiz-section '>
 
@@ -262,6 +263,7 @@ function Quizusersignup() {
 
         </div>
       </div>
+      </section>
     </>
   );
 }

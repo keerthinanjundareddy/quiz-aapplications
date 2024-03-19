@@ -77,6 +77,7 @@ function Quizuserforgotpassword() {
       
   return (
     <>
+    <section>
      <div className='usersignupquiz-fullbox-container'>
         <div className='usersignupquiz-section '>
 
@@ -110,7 +111,7 @@ function Quizuserforgotpassword() {
 
             </div>
         </div>
-      
+      </section>
     </>
   )
 }

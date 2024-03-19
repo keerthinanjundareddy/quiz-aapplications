@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './Quizsignups.css';
 import TextField from '@mui/material/TextField';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Import the icon component
@@ -21,7 +21,22 @@ function Quizusersignin() {
 
 const navigate = useNavigate()
 
+// useEffect(() => {
+  // Function to make the screen full-screen on component mount
+//   const makeFullScreen = () => {
+//       if (document.documentElement.requestFullscreen) {
+//           document.documentElement.requestFullscreen();
+//       } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+//           document.documentElement.mozRequestFullScreen();
+//       } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+//           document.documentElement.webkitRequestFullscreen();
+//       } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+//           document.documentElement.msRequestFullscreen();
+//       }
+//   };
 
+//   makeFullScreen(); // Call the function to make full-screen
+// }, []); // Run only on component mount
 
   const handleUserNameFocus = () => {
     setUserNameFocused(true);
@@ -101,7 +116,7 @@ const navigate = useNavigate()
       const resultData=res.data.access_token;
       localStorage.setItem("resultData",resultData)
       // setIsAuthenticated(true);
-      navigate("/quiz")
+      navigate("/lms")
 
   
 
@@ -146,6 +161,7 @@ const navigate = useNavigate()
 
   return (
     <>
+    <section>
       <div className='usersignupquiz-fullbox-container'>
         <div className='usersignupquiz-section '>
 
@@ -217,6 +233,7 @@ const navigate = useNavigate()
 
         </div>
       </div>
+      </section>
     </>
   );
 }

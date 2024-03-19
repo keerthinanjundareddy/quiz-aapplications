@@ -106,6 +106,7 @@ function Quiz() {
 
   return (
     <>
+     <section>
       <div className='quiz-fullbox-container'>
         <div className='quiz-section'>
           <div className='quiz-heading'><b> question</b></div>
@@ -157,6 +158,7 @@ function Quiz() {
           </div>
         </div>
       </div>
+      </section>
     </>
   );
 }

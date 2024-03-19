@@ -35,9 +35,9 @@
     background-color:#FFFFFF ;
     border-radius: 10px;
     width: calc(100vw - 50%);
-    /* height:calc(100vh -10%); */
+    max-height:80vh;
     margin: auto; /* This shorthand property will center the element both horizontally and vertically */
-    height: calc(100vh - 100px);
+    height:auto;
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -161,7 +161,8 @@
         border-radius: 10px;
         width: calc(100vw - 20%);
         margin: auto; /* This shorthand property will center the element both horizontally and vertically */
-        /* height: calc(100vh - 100px); */
+        height: auto;
+        max-height: 80vh;
         padding: 20px;
         margin-top: 20px;
         margin-bottom: 20px;

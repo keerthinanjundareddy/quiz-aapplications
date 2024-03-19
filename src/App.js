@@ -30,9 +30,9 @@ function App() {
   
     <Route path="/signUp"   Component={Quizusersignup} />
     <Route path="/forgotPassword"   Component={Quizuserforgotpassword} setEmailVerified={setEmailVerified} />
-    <Route path="/resetPassword/:userID"     Component={emailVerified ? <Quizuseresetpassword /> : <Navigate to="/forgotPassword" />} />
+    <Route path="/resetPassword/:userID"     Component={ Quizuseresetpassword } />
 
-    <Route path="/quiz"    Component={Quiz} />
+    <Route path="/lms"    Component={Quiz} />
 
     {/* {isAuthenticated ? (
   <Route path="/quiz"  Component={Quiz} />
