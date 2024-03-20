@@ -1,79 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './Quiz.css';
 import arrowback from '../Assets/arrow_back.png'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 function Quiz({ handleLogout }) {
-  const quizQuestions = [
-    {
-        "question": "What is the capital of France?",
-        "options": ["London ", "Paris", "Berlin", "Rome"],
-        "correct_answer": "Paris",
-        "explanation": "Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral.Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral. Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral.Paris is the capital city of France, known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral."
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "options": ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"],
-        "correct_answer": "Leonardo da Vinci",
-        "explanation": "The Mona Lisa is a famous portrait painted by the Italian Renaissance artist Leonardo da Vinci. It is one of the most recognized and valuable artworks in the world."
-    },
-    {
-        "question": "What is the tallest mountain in the world?",
-        "options": ["K2", "Mount Kilimanjaro", "Mount Everest", "Denali"],
-        "correct_answer": "Mount Everest",
-        "explanation": "Mount Everest, located in the Himalayas on the border between Nepal and China, is the tallest mountain in the world, standing at a height of 8,848.86 meters (29,031.7 feet) above sea level."
-    },
-    {
-        "question": "Who wrote the play 'Romeo and Juliet'?",
-        "options": ["William Wordsworth", "William Shakespeare", "Charles Dickens", "Jane Austen"],
-        "correct_answer": "William Shakespeare",
-        "explanation": "Romeo and Juliet is a tragedy written by English playwright William Shakespeare. It tells the story of two young star-crossed lovers whose deaths ultimately reconcile their feuding families."
-    },
-    {
-        "question": "What is the chemical symbol for water?",
-        "options": ["CO2", "H2O", "NaCl", "O2"],
-        "correct_answer": "H2O",
-        "explanation": "The chemical symbol for water is H2O, indicating that each water molecule consists of two hydrogen atoms bonded to one oxygen atom."
-    },
-    {
-        "question": "Who was the first person to step on the moon?",
-        "options": ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "John Glenn"],
-        "correct_answer": "Neil Armstrong",
-        "explanation": "Neil Armstrong, an American astronaut, was the first person to set foot on the moon on July 20, 1969, during the Apollo 11 mission."
-    },
-    {
-        "question": "What is the powerhouse of the cell?",
-        "options": ["Nucleus", "Cell membrane", "Mitochondria", "Endoplasmic reticulum"],
-        "correct_answer": "Mitochondria",
-        "explanation": "Mitochondria are often referred to as the powerhouse of the cell because they generate most of the cell's supply of adenosine triphosphate (ATP), which is used as a source of energy."
-    },
-    {
-        "question": "Who wrote the 'Harry Potter' book series?",
-        "options": ["Stephen King", "J.K. Rowling", "George R.R. Martin", "J.R.R. Tolkien"],
-        "correct_answer": "J.K. Rowling",
-        "explanation": "The Harry Potter book series was written by British author J.K. Rowling. It follows the life and adventures of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley."
-    },
-    {
-        "question": "What is the capital of Japan?",
-        "options": ["Beijing", "Seoul", "Tokyo", "Bangkok"],
-        "correct_answer": "Tokyo",
-        "explanation": "Tokyo is the capital city of Japan, known for its bustling metropolis, cutting-edge technology, and rich cultural heritage."
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "options": ["Mars", "Venus", "Saturn", "Jupiter"],
-        "correct_answer": "Jupiter",
-        "explanation": "Jupiter is the largest planet in our solar system, with a diameter of about 143,000 kilometers (89,000 miles). It is a gas giant composed mostly of hydrogen and helium."
-    }
-]
 
 const navigate = useNavigate()
 
+
+const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [showFinishPopup, setShowFinishPopup] = useState(false); // New state for finish popup
 
+
+  useEffect(() => {
+    // Fetch quiz questions from API when the component mounts
+    fetchQuizQuestions();
+  }, []);
+
+  const headerObject = {
+    'Content-Type': 'application/json',
+    Accept: '*/*',
+  };
+
+
+  const fetchQuizQuestions = () => {
+    axios.post('http://localhost:8000/generate', {
+        content: "The Toyota Glanza is a compact hatchback that has garnered significant attention for its impressive features, catering to consumers seeking comfort, convenience, and advanced technology. One standout feature is its Total Effective Control Technology (TECT), which enhances occupant safety by incorporating crushable zones for impact absorption, uniformly dispersing impact energy, and utilizing high tensile and ultra-high tensile steel to ensure a lightweight yet strong body structure.Available in four variants - E, G, V, and the top-end V CVT (automatic) - the Glanza offers both manual transmission across all variants and an Intelligent Gear Shift (IGS) Automatic Manual Transmission (AMT) in the SG and V variants."
+      },{ headers: headerObject})
+      .then(response => {
+        // Update quizQuestions state with the API response
+       console.log("response of quiz data",response)
+      })
+      .catch(error => {
+        console.log("error",error)
+        console.error('Error fetching quiz questions:', error);
+      });
+  };
+  
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
   const handleOptionClick = (option) => {
